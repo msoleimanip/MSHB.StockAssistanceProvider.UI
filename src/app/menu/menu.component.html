@@ -1,0 +1,45 @@
+<nav>
+  <div class="logo">
+    <h4>
+      <a [routerLink]='["/"]'>کمک یار بورس</a>
+    </h4>
+  </div>
+
+  <ul class="nav-links">
+    <li>
+      <a *ngIf="currentUser" [routerLink]='["/"]'>داشبورد</a>
+    </li>
+    <li>
+      <a *ngIf="isAdmin" [routerLink]='["/users"]'>مدیریت کاربران</a>
+    </li>
+    <li>
+      <a *ngIf="currentUser" [routerLink]='["/shared/contactUs"]'>مدیریت سهام ها</a>
+    </li>
+    <li>
+      <a *ngIf="currentUser" [routerLink]='["/shared/contactUs"]'>مدیریت فعالیت ها</a>
+    </li>
+
+    <li>
+      <a *ngIf="!currentUser" (click)="loginModal()">ورود</a>
+      <a *ngIf="currentUser" (click)="logout()">خروج</a>
+    </li>
+
+
+    <!-- <li class="dropdown" [ngClass]="{'d-none': !currentUser}">
+      <a href="javascript:void(0)" class="dropbtn">Menu.BaseInfo</a>
+      <div *ngIf="currentUser" class="dropdown-content">
+        <a [routerLink]='["/laboratory"]'>Menu.Laboratory</a>
+        <a [routerLink]='["/resume"]'>Menu.Resume</a>
+        <a [routerLink]='["/news"]'>Menu.News</a>
+        <a (click)="logout()">Menu.Logout</a>
+      </div>
+    </li> -->
+  </ul>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+
+</nav>

@@ -24,9 +24,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/glyphicons-only-bootstrap/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/content/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "StockAssistantProviderUI"
+    }
+  },
+  "defaultProject": "StockAssistantProviderUI",
+  "cli": {
+    "analytics": "2dae41c7-b7db-48cd-afdf-bd82701f5752"
+  }
 }

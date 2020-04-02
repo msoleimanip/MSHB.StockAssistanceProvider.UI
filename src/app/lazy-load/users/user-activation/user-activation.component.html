@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">صفحه تغییر وضعیت کاربر</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="activationForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group row has-error">
+      <label for="isActive" class="col-sm-2 col-form-label">وضعیت کاربر</label>
+      <div class="col-sm-10">
+        <select id="isActive" class="form-control" formControlName="isActive"
+          (change)="isActiveSelect = !isActiveSelect;"
+          [ngClass]="{'border-success':isActiveSelect.toString()==='true', 'border-danger': isActiveSelect.toString()==='false'}">
+          <option value="{{true}}">فعال</option>
+          <option value="{{false}}">غیرفعال</option>
+        </select>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <img *ngIf="loading" class="pl-2" src="/assets/images/wait.gif" />
+  <button ngbAutofocus type="button" class="btn btn-outline-success" (click)="onSubmit()">تائید و تغییر وضعیت</button>
+  <button type="button" class="btn btn-outline-danger" (click)="close()">انصراف</button>
+</div>

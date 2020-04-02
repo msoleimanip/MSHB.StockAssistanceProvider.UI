@@ -1,0 +1,121 @@
+<div class="container" style="margin-top: 50px;">
+  <div class="card">
+    <div class="card-header">
+      <label>صفحه مدیریت کاربران</label>
+      <button type="button" class="btn btn-primary btn-Create" data-toggle="collapse" data-target="#searchPanel"
+        aria-expanded="false">جستــجو</button>
+    </div>
+    <div class="card-body">
+
+      <!-- Begin Search Panel -->
+      <div class="card bg-light mb-3 collapse" id="searchPanel">
+        <div class="card-header">
+          <label>جستــجو</label>
+        </div>
+        <div class="panel-body card-body-marginer">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-3">نــام</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" [(ngModel)]="searchModel.firstName" />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3">نـام خـانوادگی</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" [(ngModel)]="searchModel.lastName" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-md-3">نـام کـاربری</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" [(ngModel)]="searchModel.username" />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3">وضعیت فعالیت</label>
+                <div class="col-md-9">
+                  <select class="form-control" [(ngModel)]="searchModel.isActive">
+                    <option value="">انتخاب کنید</option>
+                    <option value="{{true}}">فعال</option>
+                    <option value="{{false}}">غیرفعال</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-success" (click)="loadUsers()">جستــجو</button>
+          <img *ngIf="loading" class="pl-2" src="/assets/images/wait.gif" />
+        </div>
+      </div>
+      <!-- End Search Panel -->
+
+      <div class="card ">
+        <div class="card-header">
+          <label>لـیست کـاربران</label>
+          <button type="button" class="btn btn-success btn-Create" (click)="create()">ایجاد کـاربر جـدید</button>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ردیف</th>
+                <th>نــام</th>
+                <th>نـام خـانوادگی</th>
+                <th>نـام کـاربری</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of users.searchUserViewModel; let row = index;">
+                <td>{{row + 1}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.username}}</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-success" title="تغییر وضعیت" (click)="changeActivation(item.id,item.isActive)">
+                    <i class="fa"
+                      [ngClass]="{'fa-lock':item.isActive.toString() === 'true', 'fa-unlock':item.isActive.toString() === 'false'}"></i>
+                  </button>&nbsp;
+                  <button type="button" class="btn btn-sm btn-primary" title="ویرایش کاربر"><i
+                      class="fa fa-pencil"></i></button>&nbsp;
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <ngb-pagination [collectionSize]="users.totalCount" [(page)]="searchModel.pageIndex"
+                (pageChange)="loadUsers()" [maxSize]="5" [boundaryLinks]="true">
+              </ngb-pagination>
+            </div>
+            <div class="col-md-6">
+              <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="searchModel.pageSize">
+                <option [ngValue]="10">10 ItemsPerPage</option>
+                <option [ngValue]="15">15 ItemsPerPage</option>
+                <option [ngValue]="20">20 ItemsPerPage</option>
+              </select>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+    <!--
+    <div class="panel-footer">
+
+    </div> -->
+  </div>
+</div>

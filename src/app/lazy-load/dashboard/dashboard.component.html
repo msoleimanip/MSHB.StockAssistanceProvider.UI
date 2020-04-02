@@ -1,0 +1,57 @@
+<hr>
+
+<ngb-carousel #carousel interval="2500" [pauseOnHover]="true">
+  <ng-template ngbSlide *ngFor="let img of images; index as i">
+
+    <div class="picsum-img-wrapper">
+      <img [src]="img" alt="" class="w-100">
+    </div>
+
+  </ng-template>
+</ngb-carousel>
+
+<hr>
+
+<div class="row">
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h6>آخرین اخبار بورس ایران</h6>
+      </div>
+      <div class="card-body">
+
+        <div *ngFor="let item of rssNews.items" class="alert alert-success" role="alert">
+          <h6 class="alert-heading">{{item.title}}</h6>
+          <p class="p-font-11 text-black">{{item.description}} ... <a [href]="item.link" target="_blank">مشاهده خبر</a>
+          </p>
+          <hr>
+          <p class="mb-0 d-inline p-font-small">
+            <label >منبع خبر: {{item.author}}</label>
+            <label class="pull-left" >زمان خبر: {{item.pubDate}}</label>
+          </p>          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h6>آخرین اخبار و اطلاعیه ها</h6>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let item of news; let i=index;" class="alert alert-warning" role="alert">
+          <p class="alert-heading">{{item.title}}</p>
+          <p class="p-font-10 text-black">{{item.description}} ... <a data-toggle="collapse" href="#collapse{{i}}"
+              role="button" aria-expanded="false" aria-controls="collapses">مشاهده خبر</a></p>
+          <p class="collapse mb-0 p-content" id="collapse{{i}}">{{item.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
