@@ -24,7 +24,7 @@
     "angular-animations": "0.0.10",
     "font-awesome": "^4.7.0",
     "glyphicons-only-bootstrap": "^1.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jwt-decode": "^2.2.0",
     "ngx-toastr": "^10.0.4",
     "rxjs": "~6.5.4",
